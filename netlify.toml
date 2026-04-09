@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/backend-api/*"
+  to = "https://gennie-unconstrainable-untypically.ngrok-free.dev/:splat"
+  status = 200
+  force = true
