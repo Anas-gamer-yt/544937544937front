@@ -1,5 +1,16 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "frontend/.next"
+
 [[redirects]]
-  from = "/backend-api/*"
-  to = "https://gennie-unconstrainable-untypically.ngrok-free.dev/:splat"
+  from = "/backend-api/api/*"
+  to = "https://gennie-unconstrainable-untypically.ngrok-free.dev/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/uploads/*"
+  to = "https://gennie-unconstrainable-untypically.ngrok-free.dev/uploads/:splat"
   status = 200
   force = true
