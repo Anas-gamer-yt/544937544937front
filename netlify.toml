@@ -13,3 +13,5 @@
   to = "https://gennie-unconstrainable-untypically.ngrok-free.dev/uploads/:splat"
   status = 200
   force = true
+
+ngrok-skip-browser-warning: true
