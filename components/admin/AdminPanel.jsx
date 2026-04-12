@@ -26,7 +26,7 @@ import {
   getAdminSession,
   logoutAdminSession
 } from "@/lib/admin";
-import { apiFetch } from "@/lib/fetcher";
+import { apiFetch, getCategories } from "@/lib/fetcher";
 import { DEFAULT_SITE_CONTENT, resolveSiteContent } from "@/lib/siteContent";
 
 const tabConfig = [
@@ -341,7 +341,17 @@ export default function AdminPanel() {
           adminRequest("/api/categories", {
             token: authToken,
             query: { includeInactive: true }
-          }).then((payload) => setCategories(payload?.data || []))
+          }).then(async (payload) => {
+            const data = Array.isArray(payload?.data) ? payload.data : null;
+
+            if (data) {
+              setCategories(data);
+              return;
+            }
+
+            const fallbackCategories = await getCategories();
+            setCategories(Array.isArray(fallbackCategories) ? fallbackCategories : []);
+          })
         );
       } else {
         setCategories([]);
