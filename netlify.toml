@@ -1,17 +1,15 @@
-[build]
-  command = "npm run build"
-  publish = ".next"
-
 [[redirects]]
   from = "/backend-api/api/*"
   to = "https://gennie-unconstrainable-untypically.ngrok-free.dev/api/:splat"
   status = 200
   force = true
+  [redirects.headers]
+    ngrok-skip-browser-warning = "true"
 
 [[redirects]]
   from = "/uploads/*"
   to = "https://gennie-unconstrainable-untypically.ngrok-free.dev/uploads/:splat"
   status = 200
   force = true
-
-ngrok-skip-browser-warning: true
+  [redirects.headers]
+    ngrok-skip-browser-warning = "true"
