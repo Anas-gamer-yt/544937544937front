@@ -15,7 +15,8 @@ export default function AddToCartButton({
   variant = null,
   className = "",
   label = "Add to Cart",
-  quantityControls = true
+  quantityControls = true,
+  mobileCompact = false
 }) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
@@ -51,7 +52,7 @@ export default function AddToCartButton({
     return (
       <Link
         href={`/product/${product._id}`}
-        className={`inline-flex items-center justify-center gap-2 rounded-full bg-brand-primary px-4 py-2.5 text-xs font-semibold text-white sm:px-5 sm:py-3 sm:text-sm ${className}`}
+        className={`inline-flex items-center justify-center gap-2 rounded-full bg-[#2563eb] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_16px_34px_rgba(37,99,235,0.3)] hover:scale-[1.02] hover:bg-[#1d4ed8] sm:px-5 sm:py-3 sm:text-sm ${className}`}
       >
         <ShoppingBag size={16} />
         Choose options
@@ -62,27 +63,31 @@ export default function AddToCartButton({
   return (
     <div className={`space-y-3 ${className}`}>
       {quantityControls ? (
-        <div className="flex items-center justify-between rounded-full border border-brand-border bg-brand-background p-1.5">
+        <div
+          className={`items-center justify-between rounded-full border border-white/10 bg-white/5 p-1.5 ${
+            mobileCompact ? "hidden sm:flex" : "flex"
+          }`}
+        >
           <button
             type="button"
             onClick={decrementQuantity}
             disabled={quantity <= 1}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand-primary disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white disabled:cursor-not-allowed disabled:opacity-50"
             aria-label="Decrease quantity"
           >
             <Minus size={15} />
           </button>
           <div className="min-w-16 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-muted">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#94a3b8]">
               Qty
             </p>
-            <p className="text-sm font-semibold text-brand-primary">{quantity}</p>
+            <p className="text-sm font-semibold text-white">{quantity}</p>
           </div>
           <button
             type="button"
             onClick={incrementQuantity}
             disabled={quantity >= Math.max(inventoryCount, 1) || isOutOfStock}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-brand-primary disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white disabled:cursor-not-allowed disabled:opacity-50"
             aria-label="Increase quantity"
           >
             <Plus size={15} />
@@ -94,10 +99,14 @@ export default function AddToCartButton({
         type="button"
         onClick={handleClick}
         disabled={isOutOfStock}
-        className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold text-white sm:px-5 sm:py-3 sm:text-sm ${
+        className={`inline-flex w-full items-center justify-center gap-2 rounded-full font-semibold text-white ${
+          mobileCompact
+            ? "px-3.5 py-2 text-[0.72rem] sm:px-5 sm:py-3 sm:text-sm"
+            : "px-4 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm"
+        } ${
           isOutOfStock
-            ? "cursor-not-allowed bg-slate-400"
-            : "bg-brand-cta hover:-translate-y-0.5 hover:bg-orange-500"
+            ? "cursor-not-allowed bg-slate-500"
+            : "bg-[#2563eb] shadow-[0_18px_38px_rgba(37,99,235,0.35)] hover:-translate-y-0.5 hover:bg-[#1d4ed8]"
         }`}
       >
         <ShoppingBag size={16} />

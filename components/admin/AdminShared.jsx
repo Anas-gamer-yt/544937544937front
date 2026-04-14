@@ -8,11 +8,11 @@ export function SectionCard({ title, copy, actions, children }) {
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-secondary">
             Admin Section
           </p>
-          <h2 className="mt-3 text-2xl font-semibold text-brand-primary">
+          <h2 className="mt-3 text-2xl font-semibold text-white">
             {title}
           </h2>
           {copy ? (
-            <p className="mt-2 max-w-2xl text-sm leading-7 text-brand-muted">
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-[#b8c7e6]">
               {copy}
             </p>
           ) : null}
@@ -31,7 +31,7 @@ export function TabButton({ icon: Icon, label, active, onClick, count }) {
       onClick={onClick}
       className={`flex w-full items-center justify-between rounded-[24px] border px-4 py-4 text-left ${
         active
-          ? "border-brand-secondary bg-brand-secondary/8 text-brand-primary shadow-focus"
+          ? "border-brand-secondary bg-brand-secondary/12 text-white shadow-focus"
           : "border-brand-border bg-white text-brand-muted hover:border-brand-secondary/40 hover:text-brand-primary"
       }`}
     >
@@ -62,7 +62,7 @@ export function TextInput(props) {
   return (
     <input
       {...props}
-      className={`w-full rounded-2xl border border-brand-border bg-brand-background px-4 py-3 outline-none focus:border-brand-secondary focus:shadow-focus ${
+      className={`w-full rounded-2xl border border-brand-border bg-brand-background px-4 py-3 text-brand-text outline-none placeholder:text-brand-muted focus:border-brand-secondary focus:shadow-focus ${
         props.className || ""
       }`}
     />
@@ -85,7 +85,7 @@ export function TextArea(props) {
   return (
     <textarea
       {...props}
-      className={`w-full rounded-2xl border border-brand-border bg-brand-background px-4 py-3 outline-none focus:border-brand-secondary focus:shadow-focus ${
+      className={`w-full rounded-2xl border border-brand-border bg-brand-background px-4 py-3 text-brand-text outline-none placeholder:text-brand-muted focus:border-brand-secondary focus:shadow-focus ${
         props.className || ""
       }`}
     />
@@ -96,7 +96,7 @@ export function SelectInput(props) {
   return (
     <select
       {...props}
-      className={`w-full rounded-2xl border border-brand-border bg-brand-background px-4 py-3 outline-none focus:border-brand-secondary focus:shadow-focus ${
+      className={`w-full rounded-2xl border border-brand-border bg-brand-background px-4 py-3 text-brand-text outline-none focus:border-brand-secondary focus:shadow-focus ${
         props.className || ""
       }`}
     />

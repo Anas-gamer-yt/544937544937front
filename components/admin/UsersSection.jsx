@@ -55,7 +55,10 @@ export default function UsersSection({
         title={userForm.id ? "Edit user" : "New user"}
         copy="Create multiple back-office accounts and assign only the role each person needs."
       >
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form
+          onSubmit={onSubmit}
+          className="space-y-4 rounded-[24px] bg-brand-background p-5 shadow-soft"
+        >
           <Field label="Name">
             <TextInput
               value={userForm.name}

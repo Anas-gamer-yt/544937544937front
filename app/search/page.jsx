@@ -1,3 +1,4 @@
+import MasonryGrid from "@/components/MasonryGrid";
 import ProductCard from "@/components/ProductCard";
 import SearchBar from "@/components/SearchBar";
 import { getProducts, getStoreSettings } from "@/lib/fetcher";
@@ -34,22 +35,22 @@ export default async function SearchPage({ searchParams }) {
 
       {query ? (
         <div className="mt-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-secondary">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d4af37]">
             {products.length} {content.searchResultsLabel}
           </p>
 
           {products.length ? (
-            <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
+            <MasonryGrid className="masonry-grid-products mt-6">
               {products.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
-            </div>
+            </MasonryGrid>
           ) : (
             <div className="surface-card mt-6 p-8 text-center">
-              <h2 className="text-2xl font-semibold text-brand-primary">
+              <h2 className="text-2xl font-semibold text-white">
                 {content.searchEmptyTitle}
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-brand-muted">
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#cbd5f5]">
                 {content.searchEmptyCopy}
               </p>
             </div>
@@ -57,10 +58,10 @@ export default async function SearchPage({ searchParams }) {
         </div>
       ) : (
         <div className="surface-card mt-10 p-8 text-center">
-          <h2 className="text-2xl font-semibold text-brand-primary">
+          <h2 className="text-2xl font-semibold text-white">
             {content.searchStartTitle}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-brand-muted">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#cbd5f5]">
             {content.searchStartCopy}
           </p>
         </div>

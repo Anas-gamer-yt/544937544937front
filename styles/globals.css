@@ -3,14 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #1a3d7c;
-  --color-secondary: #1db9a0;
-  --color-cta: #ff8a00;
-  --color-background: #f6f6f6;
-  --color-surface: #ffffff;
-  --color-text: #1d1d1f;
-  --color-muted: #697386;
-  --color-border: #d9e0ea;
+  color-scheme: dark;
+  --page-background: #0b1120;
+  --page-background-strong: #0f172a;
+  --page-surface: #111c32;
+  --page-surface-muted: #1e293b;
+  --page-accent: #d4af37;
+  --page-cta: #2563eb;
+  --page-text: #f8fafc;
+  --page-muted: #cbd5f5;
+  --page-border: rgba(255, 255, 255, 0.1);
+  --glass-surface: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.13),
+    rgba(255, 255, 255, 0.05)
+  );
+  --glass-surface-strong: linear-gradient(
+    180deg,
+    rgba(17, 28, 50, 0.86),
+    rgba(10, 18, 34, 0.7)
+  );
+  --glass-surface-light: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72),
+    rgba(255, 255, 255, 0.5)
+  );
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 html {
@@ -20,10 +39,10 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(29, 185, 160, 0.08), transparent 24%),
-    radial-gradient(circle at right top, rgba(255, 138, 0, 0.1), transparent 22%),
-    var(--color-background);
-  color: var(--color-text);
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.1), transparent 24%),
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 26%),
+    linear-gradient(180deg, #0f172a 0%, #08101f 100%);
+  color: var(--page-text);
 }
 
 a,
@@ -32,192 +51,240 @@ input,
 select,
 textarea {
   transition:
-    color 160ms ease,
-    background-color 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    transform 160ms ease;
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease,
+    opacity 220ms ease;
 }
 
 ::selection {
-  background: rgba(29, 185, 160, 0.18);
-  color: var(--color-primary);
+  background: rgba(212, 175, 55, 0.28);
+  color: #0f172a;
 }
 
 .page-shell {
-  @apply mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16;
+  @apply mx-auto w-full max-w-[1680px] px-2.5 sm:px-6 lg:px-10 xl:px-14 2xl:px-16;
 }
 
 .section-shell {
-  @apply py-16 sm:py-20;
+  @apply py-12 sm:py-20 lg:py-24;
 }
 
 .surface-card {
-  @apply rounded-[28px] border border-brand-border bg-brand-surface shadow-soft;
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  background: var(--glass-surface-strong);
+  box-shadow:
+    var(--glass-highlight),
+    0 24px 60px rgba(2, 8, 23, 0.28);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.glass-panel {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    var(--glass-highlight),
+    0 20px 48px rgba(2, 8, 23, 0.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.glass-panel-strong {
+  background: var(--glass-surface-strong);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    var(--glass-highlight),
+    0 26px 60px rgba(2, 8, 23, 0.28);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.glass-panel-light {
+  background: var(--glass-surface-light);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.46),
+    0 24px 60px rgba(2, 8, 23, 0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .eyebrow {
-  @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em];
+  @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#d4af37];
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .section-kicker {
-  @apply text-sm font-semibold uppercase tracking-[0.26em] text-brand-secondary;
+  @apply text-sm font-semibold uppercase tracking-[0.28em] text-[#d4af37];
 }
 
 .section-title {
-  @apply font-display text-4xl leading-none text-brand-text sm:text-5xl lg:text-6xl;
+  @apply font-display text-4xl leading-[1.02] text-white sm:text-5xl lg:text-6xl;
 }
 
 .section-copy {
-  @apply max-w-2xl text-base leading-7 text-brand-muted sm:text-lg;
+  @apply max-w-2xl text-base leading-8 text-[#cbd5f5] sm:text-lg;
 }
 
 .button-primary {
-  @apply inline-flex items-center justify-center rounded-full bg-brand-cta px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 hover:-translate-y-0.5 hover:bg-orange-500;
+  @apply inline-flex items-center justify-center rounded-full bg-[#2563eb] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(37,99,235,0.35)] hover:scale-[1.03] hover:bg-[#1d4ed8];
 }
 
 .button-secondary {
-  @apply inline-flex items-center justify-center rounded-full border border-brand-primary/20 bg-white/85 px-6 py-3 text-sm font-semibold text-brand-primary backdrop-blur hover:-translate-y-0.5 hover:border-brand-secondary/50 hover:text-brand-secondary;
-}
-
-.grid-fade {
-  position: relative;
-}
-
-.grid-fade::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
-  pointer-events: none;
-}
-
-.float-card {
-  animation: float-card 7s ease-in-out infinite;
-}
-
-.float-card-delay {
-  animation: float-card 9s ease-in-out infinite;
-}
-
-@keyframes float-card {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold text-white hover:scale-[1.03] hover:border-[#d4af37]/40 hover:text-[#d4af37];
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 18px 40px rgba(2, 8, 23, 0.16);
 }
 
 .product-card-media {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 0.95;
+}
+
+.category-card-media {
+  aspect-ratio: 4 / 3.9;
 }
 
 .masonry-grid {
-  column-gap: 1rem;
+  column-gap: 0.625rem;
 }
 
 .masonry-item {
   break-inside: avoid;
-  margin-bottom: 1rem;
+  margin-bottom: 0.625rem;
 }
 
-.reveal-scroll {
-  opacity: 1;
-  transform: none;
-}
-
-@supports (animation-timeline: view()) {
-  .reveal-scroll {
-    opacity: 0;
-    transform: translate3d(0, 2rem, 0) scale(0.985);
-    animation-name: reveal-scroll;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-fill-mode: both;
-    animation-timeline: view();
-    animation-range: entry 12% cover 34%;
-    will-change: transform, opacity;
-  }
-
-  .reveal-scroll-delay-1 {
-    animation-range: entry 18% cover 38%;
-  }
-
-  .reveal-scroll-delay-2 {
-    animation-range: entry 22% cover 42%;
-  }
-
-  .reveal-scroll-delay-3 {
-    animation-range: entry 26% cover 46%;
-  }
-}
-
-@keyframes reveal-scroll {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 2rem, 0) scale(0.985);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@media (min-width: 640px) {
-  .product-card-media {
-    aspect-ratio: 4 / 5;
-  }
-}
-
-@media (min-width: 768px) {
-  .masonry-grid {
-    column-gap: 1.5rem;
-  }
-
-  .masonry-item {
-    margin-bottom: 1.5rem;
-  }
+.masonry-grid-categories {
+  columns: 2;
 }
 
 .masonry-grid-products {
   columns: 2;
 }
 
-.masonry-grid-products .masonry-item:nth-child(4n + 2) .product-card-media {
-  aspect-ratio: 1 / 1.08;
+.reveal-scroll {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 520ms ease,
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.masonry-grid-products .masonry-item:nth-child(4n + 3) .product-card-media {
-  aspect-ratio: 1 / 1.28;
+.scroll-reveal-ready .reveal-scroll {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0) scale(0.985);
 }
 
-.masonry-grid-products .masonry-item:nth-child(4n) .product-card-media {
-  aspect-ratio: 1 / 0.92;
+.scroll-reveal-ready .reveal-scroll.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
-@media (min-width: 768px) {
+.scroll-reveal-ready .reveal-scroll-delay-1 {
+  transition-delay: 70ms;
+}
+
+.scroll-reveal-ready .reveal-scroll-delay-2 {
+  transition-delay: 130ms;
+}
+
+.scroll-reveal-ready .reveal-scroll-delay-3 {
+  transition-delay: 190ms;
+}
+
+@media (min-width: 640px) {
+  .product-card-media {
+    aspect-ratio: 1 / 1.18;
+  }
+
+  .category-card-media {
+    aspect-ratio: 4 / 4.6;
+  }
+
+  .masonry-grid {
+    column-gap: 1rem;
+  }
+
+  .masonry-item {
+    margin-bottom: 1rem;
+  }
+
+  .masonry-grid-categories,
+  .masonry-grid-products {
+    columns: 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid-categories {
+    columns: 4;
+  }
+
   .masonry-grid-products {
     columns: 4;
   }
 }
 
 @media (min-width: 1280px) {
+  .masonry-grid-categories {
+    columns: 5;
+  }
+
   .masonry-grid-products {
     columns: 5;
   }
 }
 
+@media (min-width: 1024px) {
+  .masonry-grid-categories .masonry-item:nth-child(5n + 2) .category-card-media {
+    aspect-ratio: 4 / 4.15;
+  }
+
+  .masonry-grid-categories .masonry-item:nth-child(5n + 3) .category-card-media {
+    aspect-ratio: 4 / 5.05;
+  }
+
+  .masonry-grid-categories .masonry-item:nth-child(5n + 4) .category-card-media {
+    aspect-ratio: 4 / 4.45;
+  }
+
+  .masonry-grid-products .masonry-item:nth-child(4n + 2) .product-card-media {
+    aspect-ratio: 1 / 1.28;
+  }
+
+  .masonry-grid-products .masonry-item:nth-child(4n + 3) .product-card-media {
+    aspect-ratio: 1 / 1.04;
+  }
+
+  .masonry-grid-products .masonry-item:nth-child(4n + 4) .product-card-media {
+    aspect-ratio: 1 / 1.36;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .float-card,
-  .float-card-delay,
+  html {
+    scroll-behavior: auto;
+  }
+
   .reveal-scroll {
-    animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }

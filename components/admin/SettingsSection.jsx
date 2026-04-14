@@ -55,32 +55,34 @@ export default function SettingsSection({
       copy="These settings control branding, storefront copy, checkout messaging, and the WhatsApp handoff."
     >
       <form onSubmit={onSubmit} className="space-y-8">
-        <div className="grid gap-5 lg:grid-cols-2">
-          <Field label="Store name">
-            <TextInput
-              value={settingsForm.storeName}
-              onChange={(event) =>
-                setSettingsForm((current) => ({
-                  ...current,
-                  storeName: event.target.value
-                }))
-              }
-              placeholder="Maison Meridian"
-            />
-          </Field>
+        <div className="rounded-[24px] bg-brand-background p-5 shadow-soft">
+          <div className="grid gap-5 lg:grid-cols-2">
+            <Field label="Store name">
+              <TextInput
+                value={settingsForm.storeName}
+                onChange={(event) =>
+                  setSettingsForm((current) => ({
+                    ...current,
+                    storeName: event.target.value
+                  }))
+                }
+                placeholder="Maison Meridian"
+              />
+            </Field>
 
-          <Field label="WhatsApp number" hint="Include country code if needed.">
-            <TextInput
-              value={settingsForm.whatsappNumber}
-              onChange={(event) =>
-                setSettingsForm((current) => ({
-                  ...current,
-                  whatsappNumber: event.target.value
-                }))
-              }
-              placeholder="923001234567"
-            />
-          </Field>
+            <Field label="WhatsApp number" hint="Include country code if needed.">
+              <TextInput
+                value={settingsForm.whatsappNumber}
+                onChange={(event) =>
+                  setSettingsForm((current) => ({
+                    ...current,
+                    whatsappNumber: event.target.value
+                  }))
+                }
+                placeholder="923001234567"
+              />
+            </Field>
+          </div>
         </div>
 
         <div className="grid gap-6">

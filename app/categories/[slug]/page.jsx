@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import MasonryGrid from "@/components/MasonryGrid";
 import ProductCard from "@/components/ProductCard";
 import { getCategories, getProducts, getStoreSettings } from "@/lib/fetcher";
 import { resolveSiteContent } from "@/lib/siteContent";
@@ -39,9 +40,9 @@ export default async function CategoryDetailPage({ params, searchParams }) {
 
   return (
     <div>
-      <section className="bg-brand-primary text-white">
+      <section className="border-b border-white/10 bg-[linear-gradient(180deg,#0f172a_0%,#111c32_100%)] text-white">
         <div className="page-shell py-16 sm:py-20">
-          <p className="section-kicker reveal-scroll !text-brand-secondary">
+          <p className="section-kicker reveal-scroll">
             {content.categoryDetailEyebrow}
           </p>
           <h1 className="reveal-scroll reveal-scroll-delay-1 mt-5 font-display text-5xl leading-none sm:text-6xl">
@@ -51,7 +52,7 @@ export default async function CategoryDetailPage({ params, searchParams }) {
             {category.description ||
               content.categoryDetailFallbackCopy}
           </p>
-          <div className="reveal-scroll reveal-scroll-delay-3 mt-8 inline-flex rounded-full bg-brand-secondary/12 px-4 py-2 text-sm font-semibold text-brand-secondary">
+          <div className="reveal-scroll reveal-scroll-delay-3 mt-8 inline-flex rounded-full border border-[#d4af37]/30 bg-[#d4af37]/10 px-4 py-2 text-sm font-semibold text-[#d4af37]">
             {products.length} product{products.length === 1 ? "" : "s"}
           </div>
         </div>
@@ -68,8 +69,8 @@ export default async function CategoryDetailPage({ params, searchParams }) {
                 href={`/categories/${slug}?sort=${option.value}`}
                 className={`rounded-full px-4 py-2 text-sm font-semibold ${
                   active
-                    ? "bg-brand-secondary text-white"
-                    : "border border-brand-border bg-white text-brand-muted hover:text-brand-secondary"
+                    ? "bg-[#2563eb] text-white shadow-[0_16px_32px_rgba(37,99,235,0.3)]"
+                    : "border border-white/10 bg-white/5 text-[#cbd5f5] hover:text-white"
                 }`}
               >
                 {option.label}
@@ -78,19 +79,14 @@ export default async function CategoryDetailPage({ params, searchParams }) {
           })}
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
-          {products.map((product, index) => (
-            <div
-              key={product._id}
-              className={`reveal-scroll reveal-scroll-delay-${index % 4}`}
-            >
-              <ProductCard product={product} />
-            </div>
+        <MasonryGrid className="masonry-grid-products mt-10">
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
           ))}
-        </div>
+        </MasonryGrid>
 
         {!products.length ? (
-          <div className="reveal-scroll surface-card mt-8 p-8 text-center text-brand-muted">
+          <div className="reveal-scroll surface-card mt-8 p-8 text-center text-[#cbd5f5]">
             {content.categoryDetailEmptyCopy}
           </div>
         ) : null}

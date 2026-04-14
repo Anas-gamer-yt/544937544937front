@@ -16,8 +16,8 @@ export default function ProductGallery({ images = [], alt }) {
 
   return (
     <div className="space-y-4">
-      <div className="overflow-hidden rounded-[32px] border border-brand-border bg-white shadow-soft">
-        <div className="aspect-[4/4.6] overflow-hidden bg-brand-background">
+      <div className="overflow-hidden rounded-[32px] border border-white/10 bg-[#111c32] shadow-[0_24px_60px_rgba(2,8,23,0.3)]">
+        <div className="aspect-[4/4.6] overflow-hidden bg-[#0f172a]">
           <img
             src={activeImage}
             alt={alt}
@@ -37,11 +37,11 @@ export default function ProductGallery({ images = [], alt }) {
               onClick={() => setActiveImage(image)}
               className={`overflow-hidden rounded-2xl border ${
                 isActive
-                  ? "border-brand-secondary shadow-focus"
-                  : "border-brand-border"
+                  ? "border-[#d4af37] shadow-[0_0_0_3px_rgba(212,175,55,0.18)]"
+                  : "border-white/10"
               }`}
             >
-              <div className="aspect-square overflow-hidden bg-brand-background">
+              <div className="aspect-square overflow-hidden bg-[#111c32]">
                 <img
                   src={image}
                   alt={`${alt} preview ${index + 1}`}

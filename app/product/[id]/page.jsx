@@ -42,7 +42,7 @@ export default async function ProductDetailPage({ params }) {
     <div className="page-shell section-shell">
       <Link
         href={product.category?.slug ? `/categories/${product.category.slug}` : "/categories"}
-        className="reveal-scroll inline-flex items-center gap-2 text-sm font-semibold text-brand-muted hover:text-brand-secondary"
+        className="reveal-scroll inline-flex items-center gap-2 text-sm font-semibold text-[#cbd5f5] hover:text-[#d4af37]"
       >
         <ArrowLeft size={16} />
         {content.productBackToCategoryLabel}
@@ -58,7 +58,7 @@ export default async function ProductDetailPage({ params }) {
       <section className="mt-20">
         <div className="reveal-scroll">
           <p className="section-kicker">{content.productRelatedEyebrow}</p>
-          <h2 className="mt-4 text-3xl font-semibold text-brand-primary">
+          <h2 className="mt-4 text-3xl font-semibold text-white">
             {content.productRelatedTitle}
           </h2>
         </div>

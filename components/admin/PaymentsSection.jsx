@@ -53,7 +53,10 @@ export default function PaymentsSection({
         title={paymentForm.id ? "Edit payment method" : "New payment method"}
         copy="These methods appear directly on the public checkout page."
       >
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form
+          onSubmit={onSubmit}
+          className="space-y-4 rounded-[24px] bg-brand-background p-5 shadow-soft"
+        >
           <Field label="Name">
             <TextInput
               value={paymentForm.name}

@@ -12,11 +12,10 @@ export default function WhatsAppFloatingButton({ whatsappNumber }) {
       href={`https://wa.me/${number}`}
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-3 rounded-full bg-brand-secondary px-5 py-4 text-sm font-semibold text-white shadow-2xl shadow-brand-secondary/30 hover:-translate-y-1 hover:bg-teal-500"
+      className="fixed bottom-5 right-5 z-50 hidden items-center gap-3 rounded-full border border-white/10 bg-[#16a34a] px-5 py-4 text-sm font-semibold text-white shadow-[0_20px_45px_rgba(22,163,74,0.35)] hover:-translate-y-1 hover:bg-[#15803d] md:inline-flex"
     >
       <MessageCircle size={18} />
-      WhatsApp
+      <span>WhatsApp</span>
     </a>
   );
 }
-

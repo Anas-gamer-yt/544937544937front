@@ -93,7 +93,10 @@ export default function ProductsSection({
         title={productForm.id ? "Edit product" : "New product"}
         copy="Products are fully dynamic and immediately available to the storefront."
       >
-        <form onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-2">
+        <form
+          onSubmit={onSubmit}
+          className="grid gap-4 rounded-[24px] bg-brand-background p-5 shadow-soft sm:grid-cols-2"
+        >
           <Field label="Name">
             <TextInput
               value={productForm.name}
@@ -368,7 +371,7 @@ export default function ProductsSection({
             />
           </Field>
 
-          <div className="sm:col-span-2 rounded-[24px] border border-brand-border bg-brand-background/60 p-5">
+          <div className="sm:col-span-2 rounded-[24px] border border-brand-border bg-white p-5">
             <div className="flex flex-col gap-3 border-b border-brand-border pb-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-secondary">

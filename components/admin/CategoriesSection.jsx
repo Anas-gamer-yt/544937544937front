@@ -51,7 +51,10 @@ export default function CategoriesSection({
         title={categoryForm.id ? "Edit category" : "New category"}
         copy="Categories control the collection structure customers browse from the storefront."
       >
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form
+          onSubmit={onSubmit}
+          className="space-y-4 rounded-[24px] bg-brand-background p-5 shadow-soft"
+        >
           <Field label="Name">
             <TextInput
               value={categoryForm.name}

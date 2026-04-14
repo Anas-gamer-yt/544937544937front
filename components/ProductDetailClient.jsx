@@ -90,17 +90,17 @@ export default function ProductDetailClient({
             ))}
           </div>
 
-          <h1 className="mt-6 font-display text-5xl leading-none text-brand-primary sm:text-6xl">
+          <h1 className="mt-6 font-display text-5xl leading-none text-white sm:text-6xl">
             {product.name}
           </h1>
-          <p className="mt-5 text-base leading-8 text-brand-muted">
+          <p className="mt-5 text-base leading-8 text-[#cbd5f5]">
             {product.description}
           </p>
 
           {reviewCount ? (
             <div className="mt-5 flex items-center gap-3">
               <div className="flex items-center gap-1">{renderStars(reviewAverage)}</div>
-              <p className="text-sm font-semibold text-brand-primary">
+              <p className="text-sm font-semibold text-[#f8fafc]">
                 {reviewAverage}/5 from {reviewCount} review
                 {reviewCount === 1 ? "" : "s"}
               </p>
@@ -110,18 +110,18 @@ export default function ProductDetailClient({
 
         <div className="reveal-scroll reveal-scroll-delay-1 surface-card p-6">
           <div className="flex flex-wrap items-end gap-4">
-            <p className="text-4xl font-bold text-brand-text">
+            <p className="text-4xl font-bold text-white">
               {formatCurrency(displayPrice)}
             </p>
             {displayCompareAtPrice > displayPrice ? (
-              <p className="pb-1 text-lg text-brand-muted line-through">
+              <p className="pb-1 text-lg text-[#94a3b8] line-through">
                 {formatCurrency(displayCompareAtPrice)}
               </p>
             ) : null}
           </div>
           <p
             className={`mt-4 text-sm font-semibold uppercase tracking-[0.16em] ${
-              isOutOfStock ? "text-amber-700" : "text-brand-secondary"
+              isOutOfStock ? "text-amber-300" : "text-[#d4af37]"
             }`}
           >
             {isOutOfStock
@@ -131,7 +131,7 @@ export default function ProductDetailClient({
 
           {variationOptions.length ? (
             <div className="mt-6 space-y-3">
-              <p className="text-sm font-semibold text-brand-text">
+              <p className="text-sm font-semibold text-white">
                 {product.variantLabel || "Variation"}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -142,8 +142,8 @@ export default function ProductDetailClient({
                     onClick={() => handleVariationSelect(option)}
                     className={`rounded-full border px-4 py-2 text-sm font-semibold ${
                       selectedVariation === option
-                        ? "border-brand-secondary bg-brand-secondary/10 text-brand-primary"
-                        : "border-brand-border bg-white text-brand-muted hover:text-brand-primary"
+                        ? "border-[#2563eb] bg-[#2563eb]/18 text-white"
+                        : "border-white/10 bg-white/5 text-[#cbd5f5] hover:text-white"
                     }`}
                   >
                     {option}
@@ -155,7 +155,7 @@ export default function ProductDetailClient({
 
           {sizeOptions.length ? (
             <div className="mt-6 space-y-3">
-              <p className="text-sm font-semibold text-brand-text">
+              <p className="text-sm font-semibold text-white">
                 {product.sizeLabel || "Size"}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -166,8 +166,8 @@ export default function ProductDetailClient({
                     onClick={() => setSelectedSize(option)}
                     className={`rounded-full border px-4 py-2 text-sm font-semibold ${
                       selectedSize === option
-                        ? "border-brand-secondary bg-brand-secondary/10 text-brand-primary"
-                        : "border-brand-border bg-white text-brand-muted hover:text-brand-primary"
+                        ? "border-[#2563eb] bg-[#2563eb]/18 text-white"
+                        : "border-white/10 bg-white/5 text-[#cbd5f5] hover:text-white"
                     }`}
                   >
                     {option}
@@ -186,11 +186,11 @@ export default function ProductDetailClient({
         </div>
 
         {product.whatsInTheBox?.length ? (
-          <div className="reveal-scroll rounded-[24px] border border-brand-border bg-white p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-secondary">
+          <div className="reveal-scroll rounded-[24px] border border-white/10 bg-[#111c32] p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d4af37]">
               What's in the box
             </p>
-            <ul className="mt-4 space-y-3 text-sm leading-7 text-brand-muted">
+            <ul className="mt-4 space-y-3 text-sm leading-7 text-[#cbd5f5]">
               {product.whatsInTheBox.map((item) => (
                 <li key={item}>• {item}</li>
               ))}
@@ -203,29 +203,29 @@ export default function ProductDetailClient({
           Number(product.returnPolicy?.days || 0) > 0 ||
           product.returnPolicy?.description) ? (
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="reveal-scroll rounded-[24px] border border-brand-border bg-white p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-secondary">
+            <div className="reveal-scroll rounded-[24px] border border-white/10 bg-[#111c32] p-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d4af37]">
                 Warranty
               </p>
-              <p className="mt-3 text-lg font-semibold text-brand-primary">
+              <p className="mt-3 text-lg font-semibold text-white">
                 {Number(product.warranty?.days || 0) > 0
                   ? `${product.warranty.days} day warranty`
                   : "No fixed warranty days"}
               </p>
-              <p className="mt-3 text-sm leading-7 text-brand-muted">
+              <p className="mt-3 text-sm leading-7 text-[#cbd5f5]">
                 {product.warranty?.description || "Warranty details will be shared by the seller."}
               </p>
             </div>
-            <div className="reveal-scroll reveal-scroll-delay-1 rounded-[24px] border border-brand-border bg-white p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-secondary">
+            <div className="reveal-scroll reveal-scroll-delay-1 rounded-[24px] border border-white/10 bg-[#111c32] p-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d4af37]">
                 Return policy
               </p>
-              <p className="mt-3 text-lg font-semibold text-brand-primary">
+              <p className="mt-3 text-lg font-semibold text-white">
                 {Number(product.returnPolicy?.days || 0) > 0
                   ? `${product.returnPolicy.days} day return window`
                   : "Returns not available"}
               </p>
-              <p className="mt-3 text-sm leading-7 text-brand-muted">
+              <p className="mt-3 text-sm leading-7 text-[#cbd5f5]">
                 {product.returnPolicy?.description || "Return policy details are not set for this product."}
               </p>
             </div>
@@ -239,10 +239,10 @@ export default function ProductDetailClient({
             return (
               <div
                 key={`${title}-${index}`}
-                className={`reveal-scroll reveal-scroll-delay-${index % 4} rounded-[24px] border border-brand-border bg-white p-5`}
+                className={`reveal-scroll reveal-scroll-delay-${index % 4} rounded-[24px] border border-white/10 bg-[#111c32] p-5`}
               >
-                <Icon size={20} className="text-brand-secondary" />
-                <p className="mt-4 font-semibold text-brand-primary">
+                <Icon size={20} className="text-[#d4af37]" />
+                <p className="mt-4 font-semibold text-white">
                   {title}
                 </p>
               </div>
@@ -251,8 +251,8 @@ export default function ProductDetailClient({
         </div>
 
         {paymentMethods.length ? (
-          <div className="reveal-scroll rounded-[24px] border border-brand-border bg-white p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-secondary">
+          <div className="reveal-scroll rounded-[24px] border border-white/10 bg-[#111c32] p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d4af37]">
               {content.productPaymentMethodsTitle}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -264,18 +264,18 @@ export default function ProductDetailClient({
         ) : null}
 
         {reviews.length ? (
-          <div className="reveal-scroll rounded-[24px] border border-brand-border bg-white p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-secondary">
+          <div className="reveal-scroll rounded-[24px] border border-white/10 bg-[#111c32] p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d4af37]">
               Customer reviews
             </p>
             <div className="mt-5 space-y-4">
               {reviews.map((review) => (
                 <div
                   key={review._id}
-                  className="rounded-[20px] bg-brand-background p-4"
+                  className="rounded-[20px] border border-white/10 bg-[#0f172a] p-4"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-3">
-                    <p className="font-semibold text-brand-primary">
+                    <p className="font-semibold text-white">
                       {review.title || "Verified review"}
                     </p>
                     <div className="flex items-center gap-1">
@@ -283,14 +283,14 @@ export default function ProductDetailClient({
                     </div>
                   </div>
                   {(review.variantLabel || review.sizeLabel) ? (
-                    <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-secondary">
+                    <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#d4af37]">
                       {[review.variantLabel, review.sizeLabel].filter(Boolean).join(" / ")}
                     </p>
                   ) : null}
-                  <p className="mt-3 text-sm leading-7 text-brand-muted">
+                  <p className="mt-3 text-sm leading-7 text-[#cbd5f5]">
                     {review.comment || "Customer left a rating for this completed order."}
                   </p>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand-muted">
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#94a3b8]">
                     {review.customerName || "Verified buyer"}
                   </p>
                 </div>
